@@ -2,7 +2,7 @@ const BeaconScanner = require('node-beacon-scanner');
 const scanner = new BeaconScanner(); // Set an Event handler for beacons
 scanner.onadvertisement = (ad) => {
   console.log(JSON.stringify(ad, null, ' '));
-  console.log(getDistance(ad));
+  //console.log(getDistance(ad));
 };
 // Start scanning 
 scanner.startScan().then(() => {
@@ -14,7 +14,7 @@ function getDistance(beacon) {
     if (beacon.rssi === 0) {
       return -1.0;
     }
-    var ratio = beacon.rssi * 1.0 / beacon.iBeacon.txPower;
+    var ratio = beacon.rssi * 1.0 / -72;
     if (ratio < 1.0) {
         return Math.pow(ratio, 10);
     }
